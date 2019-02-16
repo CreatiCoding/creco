@@ -39,14 +39,16 @@ app.use(async (ctx, next) => {
 });
 
 // routes
-
-app.use(index.routes());
-app.use(index.allowedMethods());
-app.use(users.routes());
-app.use(users.allowedMethods());
+console.log(index);
+console.log(index.routes);
+// app.use(index.routes());
+// app.use(index.allowedMethods());
+// app.use(users.routes());
+// app.use(users.allowedMethods());
 
 // error-handling
 app.on("error", (err, ctx) => {
   console.error("server error", err, ctx);
 });
+
 module.exports = app;
