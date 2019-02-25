@@ -1,15 +1,10 @@
 {
-  "example": "https://github.com/javieraviles/node-typescript-koa-rest/blob/master/tsconfig.json",
   "compilerOptions": {
-    "target": "ES2015",
     "module": "commonjs",
-    "lib": ["es6", "dom"],
-    "sourceMap": true,
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "types": ["node", "jest"],
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "target": "es2017",
+    "noImplicitAny": true,
+    "outDir": "./dist",
+    "sourceMap": true
   },
-  "include": ["./*"]
+  "include": ["./**/*"]
 }

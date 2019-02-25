@@ -4,11 +4,10 @@
  * Module dependencies.
  */
 
-var app = require("../app.ts");
+var app = require("../app");
 var debug = require("debug")("demo:server");
 var http = require("http");
 
-console.log("\x1b[1m\x1b[32m%s\x1b[0m", "typescript KOA App is start!");
 /**
  * Get port from environment and store in Express.
  */

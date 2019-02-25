@@ -1,21 +1,19 @@
 import * as Router from "koa-router";
 
-const router = Router();
+const router: Router = new Router();
 
-router.get("/", async (ctx: any, next: Function) => {
-  await ctx.render("index", {
-    title: "Hello Koa 2!"
-  });
+router.get("/", async (ctx, next) => {
+  ctx.body = true;
 });
 
-router.get("/string", async (ctx: any, next: Function) => {
+router.get("/str", async (ctx, next) => {
   ctx.body = "koa2 string";
 });
 
-router.get("/json", async (ctx: any, next: Function) => {
+router.get("/json", async (ctx, next) => {
   ctx.body = {
-    title: "koa2 json"
+    title: "koa2 json@!#$%T"
   };
 });
-console.log(router);
+
 module.exports = router;

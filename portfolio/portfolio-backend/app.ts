@@ -1,15 +1,17 @@
 import * as Koa from "koa";
 import * as views from "koa-views";
 import * as json from "koa-json";
-import * as onerror from "koa-onerror";
 import * as bodyparser from "koa-bodyparser";
 import * as logger from "koa-logger";
-import * as index from "./routes/index";
-import * as users from "./routes/users";
-import * as koa_static from "koa-static";
 
-const app = new Koa();
+const app: Koa = new Koa();
 
+const onerror = require("koa-onerror");
+
+const index = require("./routes/index");
+const users = require("./routes/users");
+
+console.log(true);
 // error handler
 onerror(app);
 
@@ -19,32 +21,29 @@ app.use(
     enableTypes: ["json", "form", "text"]
   })
 );
-app.use(json({}));
+app.use(json());
 app.use(logger());
-app.use(koa_static("./public"));
+app.use(require("koa-static")(__dirname + "/public"));
 
 app.use(
-  views("./views", {
+  views(__dirname + "/views", {
     extension: "ejs"
   })
 );
 
 // logger
 app.use(async (ctx, next) => {
-  const start: Date = new Date();
+  const start: number = new Date().getTime();
   await next();
-  const end: Date = new Date();
-  const ms: Date = new Date(start.getTime() - end.getTime());
+  const ms: number = new Date().getTime() - start;
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
 
 // routes
-console.log(index);
-console.log(index.routes);
-// app.use(index.routes());
-// app.use(index.allowedMethods());
-// app.use(users.routes());
-// app.use(users.allowedMethods());
+app.use(index.routes());
+app.use(index.allowedMethods());
+app.use(users.routes());
+app.use(users.allowedMethods());
 
 // error-handling
 app.on("error", (err, ctx) => {

@@ -3,14 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "ts-node bin/www",
+    "watch-server": "nodemon --watch '**/*' -e ts,tsx --exec ts-node bin/www",
+    "start": "node bin/www",
     "dev": "./node_modules/.bin/nodemon bin/www",
     "prd": "pm2 start bin/www",
-    "test": "jest --silent"
+    "test": "jest"
   },
   "dependencies": {
-    "@types/node": "^10.12.24",
-    "debug": "^2.6.3",
     "ejs": "~2.3.3",
     "koa": "^2.2.0",
     "koa-bodyparser": "^3.2.0",
@@ -20,13 +19,40 @@
     "koa-onerror": "^4.1.0",
     "koa-router": "^7.1.1",
     "koa-static": "^3.0.0",
-    "koa-views": "^5.2.1"
+    "koa-views": "^5.2.1",
+    "superagent": "^4.1.0"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.5",
+    "@types/jest": "^24.0.6",
+    "@types/koa-bodyparser": "^4.2.2",
+    "@types/koa-convert": "^1.2.2",
+    "@types/koa-json": "^2.0.18",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-router": "^7.0.39",
+    "@types/koa-static": "^4.0.1",
+    "@types/koa-views": "^2.0.3",
+    "@types/superagent": "^3.8.6",
+    "debug": "^2.6.9",
+    "http": "0.0.0",
     "jest": "^24.1.0",
     "nodemon": "^1.8.1",
-    "ts-jest": "^23.10.5",
-    "typescript": "^3.3.3"
+    "ts-jest": "^24.0.0",
+    "typescript": "^3.3.3333"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": "\\.test\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "globals": {
+      "ts-jest": {
+        "diagnostics": true
+      }
+    }
   }
 }

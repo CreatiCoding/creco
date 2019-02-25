@@ -1,14 +1,14 @@
 import * as Router from "koa-router";
 
-const router = Router();
+const router: Router = new Router();
 
 router.prefix("/users");
 
-router.get("/", function(ctx: any, next: Function) {
+router.get("/", function(ctx, next) {
   ctx.body = "this is a users response!";
 });
 
-router.get("/bar", function(ctx: any, next: Function) {
+router.get("/bar", function(ctx, next) {
   ctx.body = "this is a users/bar response";
 });
 
