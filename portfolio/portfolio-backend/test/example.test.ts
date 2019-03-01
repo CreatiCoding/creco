@@ -1,23 +1,40 @@
-//routes.test.js
-import * as request from "supertest";
+// import * as request from "supertest";
 import * as app from "../app";
 import * as http from "http";
-let server: http.Server;
+import * as request from "request";
 
-beforeAll(async () => {
-  // do something before anything else runs
-  server = http.createServer(app);
-  console.log("Jest starting!");
+let server: http.Server;
+const isRunning = true;
+
+beforeAll(() => {
+  if (!isRunning) {
+    var port = "3000";
+    server = http.createServer(app);
+    server.listen(port);
+  }
 });
-// close the server after each test
 afterAll(() => {
-  server.close();
-  console.log("server closed!");
+  if (!isRunning) {
+    server.close();
+  }
 });
-describe("basic route tests", () => {
-  test("get home route GET /", async () => {
+
+describe("basic tests", () => {
+  test("ts-jest test", () => {
     const expected: number = 1;
     const received: number = 1;
+    expect(expected).toEqual(received);
+  });
+  test("ts-jest server", async () => {
+    const expected: number = 1;
+    const received: number = 1;
+    request.get({ url: "http://127.0.0.1:3000/str", json: true }, function(
+      e,
+      r,
+      user
+    ) {
+      console.log(r);
+    });
     expect(expected).toEqual(received);
   });
 });
