@@ -9,6 +9,7 @@
     "test": "jest --watchAll"
   },
   "dependencies": {
+    "@types/node": "^11.9.6",
     "@types/request": "^2.48.1",
     "ejs": "~2.3.3",
     "koa": "^2.2.0",
@@ -21,7 +22,8 @@
     "koa-static": "^3.0.0",
     "koa-views": "^5.2.1",
     "request": "^2.88.0",
-    "superagent": "^4.1.0"
+    "superagent": "^4.1.0",
+    "supertest": "^3.4.2"
   },
   "devDependencies": {
     "@types/jest": "^24.0.6",
@@ -42,19 +44,24 @@
     "typescript": "^3.3.3333"
   },
   "jest": {
-    "transform": {
-      "^.+\\.ts$": "ts-jest"
-    },
-    "testRegex": "\\.test\\.ts$",
     "moduleFileExtensions": [
       "ts",
+      "tsx",
       "js",
       "json"
     ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
     "globals": {
       "ts-jest": {
+        "tsConfigFile": "tsconfig.json",
         "diagnostics": true
       }
-    }
+    },
+    "testMatch": [
+      "**/__tests__/*.+(ts|tsx|js)"
+    ],
+    "testRegex": "\\.test\\.ts$"
   }
 }
