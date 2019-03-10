@@ -1,5 +1,15 @@
 # creco 
 
+## 0. docker
+
+```bash
+docker attach 컨테이너ID
+```
+
+
+
+
+
 ## 1. Overview
 
 ![image](https://user-images.githubusercontent.com/33514304/47150974-5c3ad900-d313-11e8-9615-6bad29c2dab6.png)

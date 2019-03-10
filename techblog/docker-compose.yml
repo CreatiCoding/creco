@@ -1,0 +1,9 @@
+version: '3'
+services:
+  node:
+    build: ./backend
+    ports:
+      - "5555:3000"
+    volumes:
+      - "./backend:/root/techblog"
+
